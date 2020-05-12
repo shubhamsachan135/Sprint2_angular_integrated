@@ -29,9 +29,10 @@ export class TransferComponent implements OnInit {
     }
 
 transferMoney(){
-  console.log(this.amount);
+  console.log(this.phoneNumber);
   console.log(this.accountId);
- // this._walletService.transferMoney(this.phoneNumber,this.amount,this.accountId);
+  console.log(this.amount);
+    this._walletService.transferMoney(this.phoneNumber,this.amount,this.accountId);
 }
 
 

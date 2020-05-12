@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { TransferComponent } from './transfer/transfer.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { UpdateWalletUserComponent } from './update-wallet-user/update-wallet-user.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path:'dashboard', canActivate:[AuthGuard],component:DashboardComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'login',component:LoginComponent},
-  {path:'transfer',component:TransferComponent}
+  {path:'login/:msg',component:LoginComponent},
+  {path:'transfer',component:TransferComponent},
+  {path:'update',canActivate:[AuthGuard],component:UpdateWalletUserComponent}
 ];
 
 @NgModule({

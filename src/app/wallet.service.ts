@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {HttpClient}   from '@angular/common/http';
+import { AuthenticationService } from './authentication.service';
 import {ActivatedRoute,Router} from '@angular/router';
 import { WalletTransaction } from './wallet-transaction';
 import{WalletUser} from './wallet-user'
@@ -12,7 +13,7 @@ export class WalletService {
   accountBalance:any;
   userModel:any;
   walletTransaction:any;
-  constructor(private _http:HttpClient,private _router:Router) { }
+  constructor(private _http:HttpClient,private _router:Router,private _authservice : AuthenticationService) { }
 
   addMoney(userId:String,amount:number){
     console.log({userId});
@@ -47,10 +48,10 @@ error=>console.log(error)
 
 
 
-   transferMoney(userId:String,amount:any,accountId:any){
-    console.log({userId});
+   transferMoney(phoneNumber:any,amount:any,accountId:any){
+    console.log({phoneNumber});
     console.log({amount});
-   this._http.get(`http://localhost:8888/add-withdraw-micro-service/wallet/withdraw/${userId}/${amount}`)
+   this._http.get(`http://localhost:8888/add-withdraw-micro-service/wallet/transfer/${phoneNumber}/${amount}/${accountId}`)
    .subscribe(data=>{console.log(data)
     this.walletTransaction=data;
    //console.log(this.walletTransaction.accountBalance);
@@ -69,12 +70,13 @@ error=>console.log(error)
       this.userModel=data;
     this.accountBalance=this.userModel.accountBalance;
     this.phoneNumber=this.userModel.phoneNumber;
+    this._authservice.Login("jwt token should be send here ");
     this._router.navigate(['/dashboard']);
 // alert("Money Added Successfully");
    },
      error=>{console.log(error);
-      let msg="Bad Credentials";}
-     // this._router.navigate(['/dashboard']);
+      let msg="Bad Credentials";
+     this._router.navigate(['/login',msg]);}
    );   
 
 
@@ -88,6 +90,18 @@ error=>console.log(error)
     return this._http.post("http://localhost:8888/login-register-micro-service/register",walletUser);
   }
 
+  public updateWalletUserFromRemote(phonenumber:number,value:any):Observable<any>{
+    return this._http.put("http://localhost:9999/updateWalletUser/"+phonenumber,value);
+
   }
+  
+
+
+  public fetchWalletUserFromRemote(phonenumber:any):Observable<any>{
+    console.log()
+    return this._http.get("http://localhost:9999/walletUser/"+phonenumber);
+
+  }
+}
   
 

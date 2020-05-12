@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransferComponent } from './transfer/transfer.component'
+import { UpdateWalletUserComponent } from './update-wallet-user/update-wallet-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { TransferComponent } from './transfer/transfer.component'
     LoginComponent ,
     RegistrationComponent,
     DashboardComponent,
-    TransferComponent
+    TransferComponent,
+    UpdateWalletUserComponent 
   ],
   imports: [
     BrowserModule,

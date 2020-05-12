@@ -41,7 +41,7 @@ onTransferClick() :void {
 
 }
 updateWalletUser(){
-
+  this._router.navigate(['/update']);
 }
 deleteWalletUser(){
 

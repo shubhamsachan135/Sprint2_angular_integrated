@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms'
 import { WalletService } from '../wallet.service';
 import { WalletUser } from '../wallet-user';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { FormsModule } from '@angular/forms';
 @Component({
@@ -14,9 +14,10 @@ export class LoginComponent implements OnInit {
   msg="";
   walletUser=new WalletUser();
   
-  constructor(private _service : WalletService,private _router : Router,private _authservice : AuthenticationService) { }
+  constructor(private route:ActivatedRoute,private _service : WalletService,private _router : Router,private _authservice : AuthenticationService) { }
 
   ngOnInit(): void {
+    this.msg=this.route.snapshot.params['msg'];
   }
 
 
