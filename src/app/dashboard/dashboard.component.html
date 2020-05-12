@@ -1,0 +1,117 @@
+<!--html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Online wallet</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="wallet-container text-center">
+		<p class="page-title"><i class="fa fa-align-left">  &nbsp;Online wallet</i> <i class="fa fa-user"> {{userName}} </i></p>
+
+		<div class="amount-box text-center">
+
+           &nbsp;
+			&nbsp;
+			<img src="https://lh3.googleusercontent.com/ohLHGNvMvQjOcmRpL4rjS3YQlcpO0D_80jJpJ-QA7-fQln9p3n7BAnqu3mxQ6kI4Sw" alt="wallet">
+			<p>Wallet Balance</p>
+			<p class="amount">{{accountBalance}}</p>
+			&nbsp;
+			<p>	{{message}}   </p>
+		</div>
+
+		<div class="btn-group text-center">
+			<button type="button" class="btn btn-outline-light"  (click)="onAddClick()" > Add Money </button>
+            <button type="button" class="btn btn-outline-light" (click)="onWithdrawClick()" >Widthdraw </button>
+                
+           
+        </div>
+             <router-outlet></router-outlet>
+
+		
+
+			<div class="footer-menu">
+				<div class="row text-center">
+					 &nbsp;
+				  
+				<p>	 <button (click)="onLogout()" class="btn btn-danger float-right" style="margin-right: 100px;">Log out</button>
+				</p>
+				</div>		
+            </div>
+            
+
+            
+</div>
+</body>
+</html-->
+
+<nav class="navbar navbar-dark bg-dark">
+	<a class="navbar-brand" href="http://localhost:4200/">
+	  <img src="../../assets/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="logo">
+	  Online Payment Wallet
+	</a>
+	<a class="navbar-brand" >
+	  <img src="../../assets/balance.svg" width="30" height="30" class="d-inline-block align-top" alt="logo">
+	  Wallet Balance :{{accountBalance}}
+	</a>
+	<div class="btn-group" style="margin-right: 50px;">
+	  <button type="button" class="btn btn-danger" style="padding-left: 20px;padding-right: 20px;">{{userName}}</button>
+	  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<span class="sr-only">Toggle Dropdown</span>
+	  </button>
+	  <div class="dropdown-menu">
+		<a class="dropdown-item" (click)="updateWalletUser()">Update Details</a>
+		<a class="dropdown-item" (click)="deleteWalletUser()" >Delete Account</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" (click)="onLogout()" >Logout</a>
+	  </div>
+	</div>
+  
+  </nav>
+  <br>
+  
+  <h1 style="text-align: center;">Welcome To Online Payment Wallet Dashboard</h1>
+  
+  <br>
+  <br>
+
+
+  <h3 style="text-align: center;">{{message}} </h3>
+  
+  
+  <div class="container" >
+	<div class="row">	
+  <div class="card" style="width: 18rem;margin-left: 200px;">
+	<img class="card-img-top rounded mx-auto d-block" src="../../assets/deposit.svg" alt="Card image cap" style="width: 200px">
+	<div class="card-body">
+	  <h5 class="card-title">Deposit Money</h5>
+	  <p class="card-text">Proceed to deposit money into your account.</p>
+	  <a (click)="onAddClick()" class="btn btn-success">Deposit Money</a>
+	</div>
+  </div>
+  
+  
+  <div class="card" style="width: 18rem;margin-left: 50px;">
+	<img class="card-img-top rounded mx-auto d-block" src="../../assets/withdraw.svg" alt="Card image cap" style="width: 200px">
+	<div class="card-body">
+	  <h5 class="card-title">Withdraw Money</h5>
+	  <p class="card-text">Proceed to Withdraw money from your account.</p>
+	  <a (click)="onWithdrawClick()" class="btn btn-success">Withdraw Money</a>
+	</div>
+  </div>
+  
+  <div class="card" style="width: 18rem;margin-left: 50px;">
+	<img class="card-img-top rounded mx-auto d-block" src="../../assets/transfer.svg" alt="Card image cap" style="width: 200px">
+	<div class="card-body">
+	  <h5 class="card-title">Transfer Money</h5>
+	  <p class="card-text">Proceed to Transfer money from your account to another account.</p>
+	  <a (click)="onTransferClick()" class="btn btn-success">Transfer Money</a>
+	</div>
+  </div>
+	
+  </div>
+  </div>
+
+
+
+  
