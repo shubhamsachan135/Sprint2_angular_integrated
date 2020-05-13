@@ -8,16 +8,16 @@ export class AuthenticationService {
   constructor() { }
 
   get isLoggedIn(){
-    return window.localStorage.getItem("isLoggedIn")==="true";
+    return sessionStorage.getItem("isLoggedIn")==="true";
   }
   get token(){
-    return window.localStorage.getItem("token");
+    return sessionStorage.getItem("token");
   }
 
   
   Login(jwt : string){
-    window.localStorage.setItem("token",jwt);
-    window.localStorage.setItem("isLoggedIn","true");
+    sessionStorage.setItem("token",jwt);
+    sessionStorage.setItem("isLoggedIn","true");
   }
 
   Logout(){

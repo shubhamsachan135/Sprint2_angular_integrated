@@ -10,8 +10,8 @@ import { UpdateWalletUserComponent } from './update-wallet-user/update-wallet-us
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path:'add',component:AddComponent},
-  {path:'withdraw',component:WithdrawComponent},
+  {path:'add',canActivate:[AuthGuard],component:AddComponent},
+  {path:'withdraw',canActivate:[AuthGuard],component:WithdrawComponent},
  // {path:'dashboard/:accountBalance',component:DashboardComponent},
  // {path:'dashboard',component:DashboardComponent},
   {path:'',component:LoginComponent},
@@ -19,8 +19,8 @@ const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
   {path:'login',component:LoginComponent},
   {path:'login/:msg',component:LoginComponent},
-  {path:'transfer',component:TransferComponent},
-  {path:'update',canActivate:[AuthGuard],component:UpdateWalletUserComponent}
+  {path:'transfer',canActivate:[AuthGuard],component:TransferComponent},
+  {path:'update/:phonenumber',canActivate:[AuthGuard],component:UpdateWalletUserComponent}
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 
 .btn {
     margin: 25px 50px 25px 0px;
-    background-color:blue; /* Green */
+    background-color:#0099cc; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -9,6 +9,8 @@
     text-decoration: none;
     display: inline-block;
     font-size: 25px;
-    width: 30%;
+    width: 20%;
   }
-  
+ .form-horizontal {
+  margin-left: 100px;
+ }

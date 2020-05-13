@@ -83,25 +83,30 @@ error=>console.log(error)
   }
 
 
-
-
-
   public registerWalletUserFromRemote(walletUser : WalletUser ):Observable<any>{
     return this._http.post("http://localhost:8888/login-register-micro-service/register",walletUser);
   }
 
+
+  public fetchWalletUserFromRemote(phonenumber:number):Observable<any>{
+    console.log({phonenumber})
+    return this._http.get("http://localhost:8888/login-register-micro-service/walletUser/"+phonenumber);
+
+  }
+
+
+  public deleteWalletUserFromRemote(phonenumber :number):Observable<any>{
+    return this._http.delete("http://localhost:8888/login-register-micro-service/deleteWalletUser/"+phonenumber);
+
+  }
+
   public updateWalletUserFromRemote(phonenumber:number,value:any):Observable<any>{
-    return this._http.put("http://localhost:9999/updateWalletUser/"+phonenumber,value);
+    console.log({phonenumber})
+    return this._http.put("http://localhost:8888/login-register-micro-service/updateWalletUser/"+phonenumber,value);
 
   }
-  
 
-
-  public fetchWalletUserFromRemote(phonenumber:any):Observable<any>{
-    console.log()
-    return this._http.get("http://localhost:9999/walletUser/"+phonenumber);
-
-  }
+ 
 }
   
 

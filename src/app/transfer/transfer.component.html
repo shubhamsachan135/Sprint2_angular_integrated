@@ -11,6 +11,10 @@
 
 
 </nav>
+
+&nbsp;
+&nbsp;
+
 <h1 style="text-align: center;">Transfer Money</h1>
 
 <br>
@@ -51,7 +55,7 @@
            <!-- <small class="text-danger" [class.d-none]="phonenumber.valid || phonenumber.untouched">&nbsp;&nbsp;phone number is a required field</small> -->
               <div *ngIf="amountt.invalid && amountt.errors && amountt.touched" class="alert alert-warning alert-dismissible fade show">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <small class="text-danger" *ngIf="amountt.errors.required">it is a required field </small>
+                  <small class="text-danger" *ngIf="amountt.errors.required">please enter amount </small>
                   <small class="text-danger" *ngIf="amountt.errors.pattern">Enter a valid amount</small>
               </div>
          </div>
@@ -62,7 +66,12 @@
             <div class="col-sm-offset-2 col-sm-10">
               <br>
               <button type="submit" class="btn btn-primary" [disabled]="transferform.form.invalid">proceed </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              
 
+              <a (click)="onCancelClick()" class="btn btn-primary">Cancel</a>
             </div>
           </div>
           

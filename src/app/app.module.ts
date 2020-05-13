@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransferComponent } from './transfer/transfer.component'
 import { UpdateWalletUserComponent } from './update-wallet-user/update-wallet-user.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { UpdateWalletUserComponent } from './update-wallet-user/update-wallet-us
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
     
   ],
   providers: [WalletService],

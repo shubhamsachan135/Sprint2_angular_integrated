@@ -35,6 +35,8 @@ transferMoney(){
     this._walletService.transferMoney(this.phoneNumber,this.amount,this.accountId);
 }
 
+onCancelClick(){
+  this._router.navigate(['/dashboard'])
 
-
+}
 }

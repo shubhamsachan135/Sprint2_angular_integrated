@@ -39,13 +39,25 @@ onWithdrawClick() :void {
 onTransferClick() :void {
   this._router.navigate(['/transfer']);
 
-}
-updateWalletUser(){
-  this._router.navigate(['/update']);
-}
-deleteWalletUser(){
+}  
 
-}
+updateWalletUser(){
+  this._router.navigate(['/update',this._walletService.phoneNumber],)
+  }
+ 
+  deleteWalletUser(){
+    this._walletService.deleteWalletUserFromRemote(this._walletService.phoneNumber).subscribe(
+      data=>{  
+        console.log(data);
+        console.log("deleted..redirecting to login page..!!");
+        this.onLogout();
+      },
+      error=>{
+        this.onLogout();
+      }
+    )
+
+  }
 
 onLogout(){
   sessionStorage.setItem('logout','loggedout'),

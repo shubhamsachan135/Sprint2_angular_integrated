@@ -11,34 +11,35 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class UpdateWalletUserComponent implements OnInit {
 
-  phonenumber:any;
+  phonenumber:number;
   walletUser:WalletUser;
-
-  constructor(private route:ActivatedRoute,private _router:Router,private _service:WalletService,private _authservice : AuthenticationService) { }
+  
+  constructor(private route:ActivatedRoute,private _router:Router,private _service:WalletService ,private _authservice : AuthenticationService) { }
 
   ngOnInit(): void {
     this.walletUser=new WalletUser();
-  //  this.phonenumber=this.route.snapshot.params['phonenumber'];
-   this.phonenumber=this._service.phoneNumber;
+
+    this.phonenumber=this.route.snapshot.params['phonenumber'];
     this._service.fetchWalletUserFromRemote(this.phonenumber).subscribe(
     data=>{
-      // console.log(data);
+      console.log(data);
       this.walletUser=data;},
-      error=>{console.log(error)})
+     error=>{console.log(error)})
     
     } 
 
     updateWalletUser(){
       this._service.updateWalletUserFromRemote(this.phonenumber,this.walletUser).subscribe(
-        data=>[
-          // console.log(data),
-          // console.log(this.phonenumber),
-          console.log("Data Updated")
-        ],
-        error=>console.log(error)); 
-        // this.walletUser=new WalletUser();
-        this._router.navigate(['dashboard/'+this.phonenumber]);
-    }
+        data=>{console.log(data)
+         
+         
+          this._router.navigate(['/login']);
+         // alert("Money Withdrawn Successfully");
+          },
+          error=>console.log(error)
+         );   
+         }
+    
 
     onSubmit(){
       this.updateWalletUser();
@@ -56,8 +57,5 @@ export class UpdateWalletUserComponent implements OnInit {
 
 
     }
-
-
-
 
 

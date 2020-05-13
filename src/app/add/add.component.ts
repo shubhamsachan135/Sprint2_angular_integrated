@@ -36,7 +36,9 @@ export class AddComponent implements OnInit {
 
     
   }
-
+  onCancelClick(){
+    this._router.navigate(['/dashboard'])
+  }
   
 
 }

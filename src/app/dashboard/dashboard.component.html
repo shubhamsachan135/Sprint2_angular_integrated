@@ -1,49 +1,4 @@
-<!--html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Online wallet</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-	<div class="wallet-container text-center">
-		<p class="page-title"><i class="fa fa-align-left">  &nbsp;Online wallet</i> <i class="fa fa-user"> {{userName}} </i></p>
 
-		<div class="amount-box text-center">
-
-           &nbsp;
-			&nbsp;
-			<img src="https://lh3.googleusercontent.com/ohLHGNvMvQjOcmRpL4rjS3YQlcpO0D_80jJpJ-QA7-fQln9p3n7BAnqu3mxQ6kI4Sw" alt="wallet">
-			<p>Wallet Balance</p>
-			<p class="amount">{{accountBalance}}</p>
-			&nbsp;
-			<p>	{{message}}   </p>
-		</div>
-
-		<div class="btn-group text-center">
-			<button type="button" class="btn btn-outline-light"  (click)="onAddClick()" > Add Money </button>
-            <button type="button" class="btn btn-outline-light" (click)="onWithdrawClick()" >Widthdraw </button>
-                
-           
-        </div>
-             <router-outlet></router-outlet>
-
-		
-
-			<div class="footer-menu">
-				<div class="row text-center">
-					 &nbsp;
-				  
-				<p>	 <button (click)="onLogout()" class="btn btn-danger float-right" style="margin-right: 100px;">Log out</button>
-				</p>
-				</div>		
-            </div>
-            
-
-            
-</div>
-</body>
-</html-->
 
 <nav class="navbar navbar-dark bg-dark">
 	<a class="navbar-brand" href="http://localhost:4200/">
@@ -73,11 +28,12 @@
   <h1 style="text-align: center;">Welcome To Online Payment Wallet Dashboard</h1>
   
   <br>
-  <br>
-
-
-  <h3 style="text-align: center;">{{message}} </h3>
   
+
+
+  <h3 style="text-align: center;color: blue;">{{message}} </h3>
+ 
+  <br>
   
   <div class="container" >
 	<div class="row">	
