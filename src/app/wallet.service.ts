@@ -9,9 +9,11 @@ import{WalletUser} from './wallet-user'
   providedIn: 'root'
 })
 export class WalletService {
+  userName:any;
   phoneNumber:any;
   accountBalance:any;
   userModel:any;
+  walletUser:any;
   walletTransaction:any;
   constructor(private _http:HttpClient,private _router:Router,private _authservice : AuthenticationService) { }
 
@@ -37,10 +39,8 @@ error=>console.log(error)
    this._http.get(`http://localhost:8888/add-withdraw-micro-service/wallet/withdraw/${userId}/${amount}`)
    .subscribe(data=>{console.log(data)
     this.walletTransaction=data;
-   //console.log(this.walletTransaction.accountBalance);
    this.accountBalance=this.walletTransaction.accountBalance;
     this._router.navigate(['/dashboard']);
-   // alert("Money Withdrawn Successfully");
     },
     error=>console.log(error)
    );   
@@ -54,10 +54,8 @@ error=>console.log(error)
    this._http.get(`http://localhost:8888/add-withdraw-micro-service/wallet/transfer/${phoneNumber}/${amount}/${accountId}`)
    .subscribe(data=>{console.log(data)
     this.walletTransaction=data;
-   //console.log(this.walletTransaction.accountBalance);
    this.accountBalance=this.walletTransaction.accountBalance;
     this._router.navigate(['/dashboard']);
-   // alert("Money Withdrawn Successfully");
     },
     error=>console.log(error)
    );   
@@ -70,9 +68,9 @@ error=>console.log(error)
       this.userModel=data;
     this.accountBalance=this.userModel.accountBalance;
     this.phoneNumber=this.userModel.phoneNumber;
+    this.userName=this.userModel.firstName+" "+this.userModel.lastName;
     this._authservice.Login("jwt token should be send here ");
     this._router.navigate(['/dashboard']);
-// alert("Money Added Successfully");
    },
      error=>{console.log(error);
       let msg="Bad Credentials";
@@ -100,13 +98,22 @@ error=>console.log(error)
 
   }
 
-  public updateWalletUserFromRemote(phonenumber:number,value:any):Observable<any>{
+  public updateWalletUserFromRemote(phonenumber:number,value:any){
     console.log({phonenumber})
-    return this._http.put("http://localhost:8888/login-register-micro-service/updateWalletUser/"+phonenumber,value);
-
+    return this._http.put("http://localhost:8888/login-register-micro-service/updateWalletUser/"+phonenumber,value)
+    .subscribe(
+      data=>{console.log(data)
+        this.walletUser=data;
+       this.userName=this.walletUser.firstName+" "+this.walletUser.lastName;
+        this._router.navigate(['/dashboard']);
+       // alert("Money Withdrawn Successfully");
+        },
+        error=>console.log(error)
+       );   
+       }
   }
 
  
-}
+
   
 

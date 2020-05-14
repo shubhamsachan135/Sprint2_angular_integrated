@@ -20,8 +20,9 @@ export class WithdrawComponent implements OnInit {
   ngOnInit() {
    
     this.phoneNumber=this._walletService.phoneNumber;
-     this.userName=this._walletService.userModel.firstName+" "+this._walletService.userModel.lastName;
-     this.accountBalance=this._walletService.accountBalance;
+    // this.userName=this._walletService.userModel.firstName+" "+this._walletService.userModel.lastName;
+    this.userName=this._walletService.userName;
+    this.accountBalance=this._walletService.accountBalance;
     }
   
   onSubmit() { 

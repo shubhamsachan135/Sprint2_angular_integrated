@@ -29,16 +29,8 @@ export class UpdateWalletUserComponent implements OnInit {
     } 
 
     updateWalletUser(){
-      this._service.updateWalletUserFromRemote(this.phonenumber,this.walletUser).subscribe(
-        data=>{console.log(data)
-         
-         
-          this._router.navigate(['/login']);
-         // alert("Money Withdrawn Successfully");
-          },
-          error=>console.log(error)
-         );   
-         }
+      this._service.updateWalletUserFromRemote(this.phonenumber,this.walletUser)
+    }
     
 
     onSubmit(){

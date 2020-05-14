@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { WalletService } from '../wallet.service';
+import { WalletUser } from '../wallet-user';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  walletUser:WalletUser;
   accountBalance:any;
   message=" ";
   userName:any;
@@ -17,8 +19,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
    // this.accountBalance=this.route.snapshot.params['accountBalance'];
+ //  this.userName=this.walletUser.firstName+" "+this.walletUser.lastName;
    this.accountBalance= this._walletService.accountBalance;
-  this.userName=this._walletService.userModel.firstName+" "+this._walletService.userModel.lastName;
+//  this.userName=this._walletService.userModel.firstName+" "+this._walletService.userModel.lastName;
+    this.userName=this._walletService.userName;
     console.log(this.userName);
   if( this._walletService.walletTransaction!=null){
      this.accountBalance= this._walletService.walletTransaction.accountBalance;
@@ -61,6 +65,7 @@ updateWalletUser(){
 
 onLogout(){
   sessionStorage.setItem('logout','loggedout'),
+  sessionStorage.setItem("isLoggedIn","false");
   this._router.navigate(['/login'])
 }
 
